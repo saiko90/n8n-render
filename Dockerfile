@@ -1,5 +1,6 @@
-# n8n prêt pour Render
+# Image officielle n8n
 FROM n8nio/n8n:latest
 
-# n8n écoute sur N8N_PORT ; sur Render, la variable PORT est imposée.
-# On ne bake rien dans l’image ; tout se fait via env vars côté Render.
+# Important : faire écouter n8n sur le port imposé par Render ($PORT)
+# Pas besoin de Start Command côté Render.
+CMD ["sh", "-c", "export N8N_PORT=${PORT:-5678}; n8n"]
